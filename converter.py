@@ -18,13 +18,14 @@ from tkinter.messagebox import askyesno
 ## Lo dejé así porque es como aparece el txt de referencia (GammaVision)
 ren1 = 'TXT GENERADO CON G2GV'
 ren2 = 'ADQUIRIDO CON GENIE PARA OPERAR CON WINGELLI'
-ren3 = 'MARITO-FELIPE' 
+ren3 = '2023' 
 
 # Create an instance of tkinter frame
 win = tk.Tk()
 win.title('G2GV')
 # Set the geometry of tkinter frame
-win.geometry("450x200")
+win.geometry("500x200")
+
 
 def open_file():
    file = filedialog.askopenfilename()
@@ -78,10 +79,9 @@ def open_file():
                f.write('\n'.join(lines))
                f.write(readcontent)
            
-           tk.Label(win, text= name.rsplit('/', 1)[1] + '.txt' + " was successfully generated.", font=('Georgia 13', 12)).place(relx=0.5,rely=0.8,anchor='center')
+           tk.Label(win, text= name.rsplit('/', 1)[1] + '.txt' + " was successfully generated in \n " + str(file.rsplit('/', 1)[0]), font=('Georgia 13', 12)).place(relx=0.5,rely=0.8,anchor='center')
            
-       else:
-           win.destroy()
+
 
 # Add a Label widget
 label2 = tk.Label(win, text=".TKA to .txt Converter", font=('Georgia 13')).pack(pady=10)
