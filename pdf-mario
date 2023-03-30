@@ -1,0 +1,36 @@
+with PdfPages('prueba6.pdf') as pdf:
+ 
+      ancho=90
+      
+ 
+      fig = plt.figure(figsize=(8.27, 11.69)) # xmi xmax ymin ymax
+      
+      
+      text15='Pedido de facturación pago adelantado'
+      text10=' Laboratorio de Metrología de Radioisótopos CNEA-CAE'
+      text6='Fecha; ',str(datetime.today().strftime('%d-%m-%Y'))
+      text20='De acuerdo a la nota enviada a los señores clientes del Laboratotio de Metrología de Radioisótopos \n mediante la cual se informa que a partir de la fecha 20/02/22 se pondrá en vigencia el nuevo tarifario, correspondiente a los servicios bridados por este sector, se remite a Ud, copia da la "Nota de solicitud de servicio" a los efectos de preparar las facturas pertinentes, segun el mencionado tarifario.'
+      texto_justificado = textwrap.fill(text20, width=ancho, replace_whitespace=True)
+      # plt.text(0.5, 0.1, 'Texto al inicio del PDF', ha='center', va='center', fontsize=14)
+      plt.text(1,1,text6, fontsize=8,fontfamily='serif', style='oblique', ha='right',
+      va='center')
+      plt.text(1,0.85,text10, fontsize=8,fontfamily='serif', style='oblique', ha='right',
+      va='center')
+      plt.text(0.5,0.95,text15, fontsize=12,fontfamily='serif', style='oblique', ha='center',
+      va='center')
+      plt.text(0,0.8,texto_justificado, fontsize=10,fontfamily='serif', style='oblique', ha='left',
+      va='top', wrap=True)
+      
+      dff=pd.read_excel('C:/Users/Eliana/Desktop/Py_pruebas/clientes_labo/Envios_para_Facturar/Factura_dia.xlsx')
+      colors = ['lightgray']*dff.shape[1] + [['white']*dff.shape[0]]*dff.shape[1]
+      tabla = plt.table(cellText=dff.values, colLabels=dff.columns,cellLoc='center', cellColours=colors, loc='center')
+      # tabla[(0,0)].set_facecolor("#56b5fd")
+      tabla.auto_set_font_size(False)
+      tabla.set_fontsize(8)
+      # plt.show()
+      plt.gca().axis('off')
+      # plt.ioff()
+      
+      pdf.savefig(fig)
+
+      plt.close()
