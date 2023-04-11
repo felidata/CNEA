@@ -1,0 +1,17 @@
+import numpy as np
+
+v = np.random.randint(0,9,10)
+
+def maximo(v): 
+    maximos = [v[0]]
+    indices = [0]
+    for i in range(len(v)-1):
+        if  v[i+1] > maximos[-1]:
+            maximos = [v[i+1]]
+            indices = [i+1]
+        elif v[i+1] == maximos[-1]:
+            maximos.append(v[i+1])
+            indices.append(i+1)
+    return print('Los valores máximos son: ' + str(maximos) + ' y se encuentran en las posiciones: ' + str(indices))
+    
+   print(maximo(v))
