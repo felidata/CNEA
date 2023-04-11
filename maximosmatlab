@@ -1,0 +1,16 @@
+% Función para encontrar máximos en una lista.
+
+function [maximos, indices] = maximo(v)
+    maximos = v(1);
+    indices = 1;
+    for i = 1:length(v)-1
+        if v(i+1) > maximos(end)
+            maximos = v(i+1);
+            indices = i+1;
+        elseif v(i+1) == maximos(end)
+            maximos = [maximos, v(i+1)];
+            indices = [indices, i+1];
+        end
+    end
+    fprintf('Los valores máximos son: %s y se encuentran en las posiciones: %s\n', mat2str(maximos), mat2str(indices))
+end
